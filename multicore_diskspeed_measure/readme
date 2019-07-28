@@ -1,0 +1,13 @@
+how fast can we read using multi cores
+
+try to sync N threads using clock
+then read a whole file to ram
+
+try to flush file cache, several methods tried.
+either /sys drop cache or O_DIRECT seem to work.
+
+todo:
+	rootless cache flush
+	ensure no optimisation
+
+
