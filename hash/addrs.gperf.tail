@@ -1,0 +1,20 @@
+%%
+int main(int argc, const char **argv)
+{
+    for (int j = 0; j < strtoumax(argv[1], NULL, 10); ++j)
+    {
+        for(int i=2;i<argc;++i) {
+            uint64_t addr = bswap_64(strtoumax(argv[i], NULL, 16));
+            if(in_word_set((char *)&addr, 8))
+            {
+                // printf("0x%016"PRIx64" is in the list.\n", bswap_64(addr));
+            }
+            else
+            {
+                // printf("0x%016"PRIx64" is not in the list.\n", bswap_64(addr));
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

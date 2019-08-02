@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <inttypes.h>
+#include <arpa/inet.h>
+#include <byteswap.h>
+
+#include <stdio.h>
+#include <stdint.h>
+#include <Judy.h>
+
+uint64_t int_arr[];
+
+int main(int argc, const char **argv)
+{
+    Word_t Index;                 // index (or key)
+    Word_t Rcount;                // count of indexes (or bits set)
+    Word_t Rc_word;               // full word return value
+    int    Rc_int;                // boolean values returned (0 or 1)
+
+    Pvoid_t J1Array = (Pvoid_t) NULL; // initialize Judy1 array
+
+    for (int i = 0; int_arr[i]; ++i)
+    {
+        Index = int_arr[i];
+        J1S(Rc_int, J1Array, Index);
+        if (Rc_int == JERR) exit(1);
+    }
+
+    for (int j = 0; j < strtoumax(argv[1], NULL, 10); ++j)
+    {
+        for(int i=2;i<argc;++i) {
+            uint64_t addr = strtoumax(argv[i], NULL, 16);
+            J1T(Rc_int, J1Array, addr);
+            if(Rc_int)
+            {
+                // printf("0x%016"PRIx64" is in the list.\n", addr);
+            }
+            else
+            {
+                return 1;
+                // printf("0x%016"PRIx64" is not in the list.\n", addr);
+            }
+        }
+    }
+    return(0);
+}

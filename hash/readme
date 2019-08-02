@@ -1,0 +1,11 @@
+try out some hashing libraries
+
+test for some randomly scattered ints in a set
+
+Use gperf by encoding int as a string (todo fix byte ordering)
+
+Use Judy in normal way
+
+Result:
+    gperf takes ages to compile. But performs better.
+    (even with re-parsing string every loop)
