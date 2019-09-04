@@ -1,0 +1,2 @@
+A little way of 'safely' (hopefully) storing some data in a local json file.
+of course sqlite is the better way, but maybe not supported on this file system.t
