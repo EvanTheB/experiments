@@ -15,16 +15,20 @@ int main(int argc, char const *argv[])
 
     assert(data);
 
-    for (long long i = 0; i < size; ++i)
+    for (unsigned long long i = 0; i < size; ++i)
     {
         data[i] = i;
     }
 
     unsigned char out = 0;
 
+    // compare a single read
+    out ^= data[((unsigned long long)random()) & (size - 1)];
+
+    // or a full sweep
     for (long long i = 0; i < 1024LL*1024LL*1024LL; ++i)
     {
-        out ^= data[((unsigned long)random()) & (size - 1)];
+       out ^= data[((unsigned long)random()) & (size - 1)];
     }
 
     printf("%d\n", out);
