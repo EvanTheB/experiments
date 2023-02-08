@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "rust/cptr"
+		},
+		{
+			"path": "rust/cstr"
+		},
+		{
+			"path": "rust/interactive_input"
+		}
+	]
+}
